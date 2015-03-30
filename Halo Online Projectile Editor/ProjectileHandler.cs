@@ -46,7 +46,7 @@ namespace Halo_Online_Projectile_Editor
             0x0020EF, // Needler Round
             0x00219E, // Machine Gun Turret Round
             0x00225C, // Plasma Pistol
-            0x00240A, // Mauler round (again)
+            0x0015B1, // Sniper Rifle
         };
 
         public static void SetNewProjectile(uint hex)

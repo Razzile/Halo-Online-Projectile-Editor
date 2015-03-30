@@ -131,7 +131,8 @@
             "Human Projectile (possible)",
             "Needler Round",
             "Machine Gun Turret Round",
-            "Plasma Pistol Round"});
+            "Plasma Pistol Round",
+            "Sniper Rifle"});
             this.projectileCombo.Location = new System.Drawing.Point(7, 43);
             this.projectileCombo.Name = "projectileCombo";
             this.projectileCombo.Size = new System.Drawing.Size(121, 21);
