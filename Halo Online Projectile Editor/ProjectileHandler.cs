@@ -10,6 +10,9 @@ namespace Halo_Online_Projectile_Editor
     {
         public static uint[] projectiles =
         {
+            /* to add your own projectiles from any of the spreadsheets, add the reverse endian of the hex to this list
+             * e.g DD010000 for headless spartan will become 0x000001DD here.
+             * Just remember to add your changes to the combo box in the form as well (and at the right place) */
             0x0001AD, // Frag
             0x0001B0, // Plasma
             0x0001B3, // Spike
@@ -53,10 +56,9 @@ namespace Halo_Online_Projectile_Editor
             byte[] rawData = new byte[6];
 
             hexData.CopyTo(rawData, 1);
-            rawData[0] = 0xBA;
-            rawData[5] = 0x90;
-            uint hexToWrite = 0xBA + hex;
-            // BA {projectile hex} 00 00
+            rawData[0] = 0xBA; // mov edx, {projectile}
+            rawData[5] = 0x90; // nop
+            // BA {projectile hex} 00 00 90
             MemoryManager.WriteToAddress(0xB5DBA5, rawData);
         }
 

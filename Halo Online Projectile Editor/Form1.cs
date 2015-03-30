@@ -34,11 +34,13 @@ namespace Halo_Online_Projectile_Editor
             if (godCheck.Checked)
             {
                 byte[] data = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                // nop, nop, nop, nop, nop, nop, nop, nop
                 MemoryManager.WriteToAddress(addr, data);
             }
             else
             {
                 byte[] data = { 0xF3, 0x0F, 0x11, 0x87, 0x00, 0x01, 0x00, 0x00 };
+                // movss dword ptr [edi+100h], xmm0
                 MemoryManager.WriteToAddress(addr, data);
             }
         }
@@ -50,11 +52,13 @@ namespace Halo_Online_Projectile_Editor
             if (ammoCheck.Checked)
             {
                 byte[] data = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                // nop, nop, nop, nop, nop, nop, nop, nop
                 MemoryManager.WriteToAddress(addr, data);
             }
             else
             {
                 byte[] data = { 0x66, 0x29, 0x94, 0x31, 0x8E, 0x02, 0x00, 0x00 };
+                // sub [ecx+esi+28Eh], dx
                 MemoryManager.WriteToAddress(addr, data);
             }
         }
@@ -66,11 +70,13 @@ namespace Halo_Online_Projectile_Editor
             if (grenadeCheck.Checked)
             {
                 byte[] data = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                // nop, nop, nop, nop, nop, nop
                 MemoryManager.WriteToAddress(addr, data);
             }
             else
             {
                 byte[] data = { 0x88, 0x81, 0x20, 0x03, 0x00, 0x00 };
+                // mov [ecx+320h], al
                 MemoryManager.WriteToAddress(addr, data);
             }
         }
