@@ -31,10 +31,9 @@ namespace Halo_Online_Projectile_Editor
             0x0015CD, // Brute Shot
             0x0015CE, // Hornet Rocket
             0x0015D0, // Frag Grenade (red trail)
-            0x001AE1, // Plasma Bolt (?)
             0x001B90, // Assault Rifle Round
             0x001D88, // Battle Rifle Round
-            0x0015BC, // Covenant Rifle Round
+            0x001DBC, // Covenant Rifle Round
             0x001E12, // DMR/AR round (?)
             0x001E49, // Plasma Rifle/Ghost Round
             0x001F00, // Shotgun Pellet
@@ -46,8 +45,13 @@ namespace Halo_Online_Projectile_Editor
             0x0020EF, // Needler Round
             0x00219E, // Machine Gun Turret Round
             0x00225C, // Plasma Pistol
-            0x0015B1, // Sniper Rifle
+            0x000000, // Extra
         };
+
+        public static void reset(uint hex, int number)
+        {
+            projectiles[number] = hex;
+        }
 
         public static void SetNewProjectile(uint hex)
         {
