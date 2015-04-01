@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.fireRateCheck = new System.Windows.Forms.CheckBox();
-            this.resetHeightBtn = new System.Windows.Forms.Button();
             this.jumpTrackbar = new System.Windows.Forms.TrackBar();
             this.jumpCheck = new System.Windows.Forms.CheckBox();
             this.grenadeCheck = new System.Windows.Forms.CheckBox();
@@ -54,7 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.mapCombo = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.mapLabel = new System.Windows.Forms.Label();
             this.setButton = new System.Windows.Forms.Button();
             this.mapCheck = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -69,7 +68,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.fireRateCheck);
-            this.groupBox1.Controls.Add(this.resetHeightBtn);
             this.groupBox1.Controls.Add(this.jumpTrackbar);
             this.groupBox1.Controls.Add(this.jumpCheck);
             this.groupBox1.Controls.Add(this.grenadeCheck);
@@ -78,7 +76,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 155);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(381, 92);
+            this.groupBox1.Size = new System.Drawing.Size(227, 92);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Player Options";
@@ -86,38 +84,29 @@
             // fireRateCheck
             // 
             this.fireRateCheck.AutoSize = true;
-            this.fireRateCheck.Location = new System.Drawing.Point(184, 68);
+            this.fireRateCheck.Location = new System.Drawing.Point(131, 68);
             this.fireRateCheck.Name = "fireRateCheck";
-            this.fireRateCheck.Size = new System.Drawing.Size(97, 17);
+            this.fireRateCheck.Size = new System.Drawing.Size(94, 17);
             this.fireRateCheck.TabIndex = 6;
-            this.fireRateCheck.Text = "Hight Fire Rate";
+            this.fireRateCheck.Text = "High Fire Rate";
             this.fireRateCheck.UseVisualStyleBackColor = true;
             this.fireRateCheck.CheckedChanged += new System.EventHandler(this.fireRateCheck_CheckedChanged);
             // 
-            // resetHeightBtn
-            // 
-            this.resetHeightBtn.Location = new System.Drawing.Point(184, 36);
-            this.resetHeightBtn.Name = "resetHeightBtn";
-            this.resetHeightBtn.Size = new System.Drawing.Size(81, 20);
-            this.resetHeightBtn.TabIndex = 5;
-            this.resetHeightBtn.Text = "Reset Height";
-            this.resetHeightBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.resetHeightBtn.UseVisualStyleBackColor = true;
-            this.resetHeightBtn.Click += new System.EventHandler(this.resetHeightBtn_Click);
-            // 
             // jumpTrackbar
             // 
-            this.jumpTrackbar.Location = new System.Drawing.Point(271, 16);
+            this.jumpTrackbar.Location = new System.Drawing.Point(123, 34);
             this.jumpTrackbar.Maximum = 15;
             this.jumpTrackbar.Name = "jumpTrackbar";
-            this.jumpTrackbar.Size = new System.Drawing.Size(104, 45);
+            this.jumpTrackbar.Size = new System.Drawing.Size(98, 45);
             this.jumpTrackbar.TabIndex = 4;
+            this.jumpTrackbar.TabStop = false;
+            this.jumpTrackbar.Scroll += new System.EventHandler(this.jumpTrackbar_Scroll);
             this.jumpTrackbar.ValueChanged += new System.EventHandler(this.jumpTrackbar_ValueChanged);
             // 
             // jumpCheck
             // 
             this.jumpCheck.AutoSize = true;
-            this.jumpCheck.Location = new System.Drawing.Point(184, 20);
+            this.jumpCheck.Location = new System.Drawing.Point(131, 11);
             this.jumpCheck.Name = "jumpCheck";
             this.jumpCheck.Size = new System.Drawing.Size(85, 17);
             this.jumpCheck.TabIndex = 3;
@@ -176,7 +165,7 @@
             this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(12, 359);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(381, 333);
+            this.groupBox2.Size = new System.Drawing.Size(227, 333);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Projectile Selector";
@@ -233,7 +222,7 @@
             "Big Tree"});
             this.propCombo.Location = new System.Drawing.Point(8, 273);
             this.propCombo.Name = "propCombo";
-            this.propCombo.Size = new System.Drawing.Size(194, 21);
+            this.propCombo.Size = new System.Drawing.Size(208, 21);
             this.propCombo.TabIndex = 12;
             this.propCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
             // 
@@ -288,7 +277,7 @@
             "Armor 27"});
             this.armorCombo.Location = new System.Drawing.Point(8, 223);
             this.armorCombo.Name = "armorCombo";
-            this.armorCombo.Size = new System.Drawing.Size(194, 21);
+            this.armorCombo.Size = new System.Drawing.Size(208, 21);
             this.armorCombo.TabIndex = 9;
             this.armorCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
@@ -304,9 +293,31 @@
             // vehiclesCombo
             // 
             this.vehiclesCombo.FormattingEnabled = true;
+            this.vehiclesCombo.Items.AddRange(new object[] {
+            "Banshee",
+            "Ghost",
+            "Mongoose",
+            "Brute Chopper",
+            "Shade",
+            "Scorpion",
+            "Warthog",
+            "Warthog (Chaingun)",
+            "Warthog (Gauss Rifle)",
+            "Warthog (Troop)",
+            "Warthog (Snow)",
+            "Warthog (Chaingun Snow)",
+            "Warthog (Gauss Rifle Snow)",
+            "Hornet",
+            "Hornet (Lite)",
+            "Hornet (Main Menu)",
+            "Wraith",
+            "Wraith (Mortar)",
+            "Wraith (Anti-infantry)",
+            "Wraith (Anti-Air)",
+            "Wraith (Anti-Infantry + Air)"});
             this.vehiclesCombo.Location = new System.Drawing.Point(8, 177);
             this.vehiclesCombo.Name = "vehiclesCombo";
-            this.vehiclesCombo.Size = new System.Drawing.Size(194, 21);
+            this.vehiclesCombo.Size = new System.Drawing.Size(208, 21);
             this.vehiclesCombo.TabIndex = 7;
             this.vehiclesCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
@@ -317,7 +328,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 13);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Bipeds/Equipment";
+            this.label7.Text = "Equipment/Bipeds";
             // 
             // miscCombo
             // 
@@ -348,7 +359,7 @@
             "Power Drain 3 (Inactive)"});
             this.miscCombo.Location = new System.Drawing.Point(8, 130);
             this.miscCombo.Name = "miscCombo";
-            this.miscCombo.Size = new System.Drawing.Size(194, 21);
+            this.miscCombo.Size = new System.Drawing.Size(208, 21);
             this.miscCombo.TabIndex = 5;
             this.miscCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged_1);
             // 
@@ -441,10 +452,11 @@
             "Needler",
             "Fuel Rod",
             "Brute Shot",
-            "Shotgun"});
+            "Shotgun",
+            "Sentinel Beam"});
             this.weaponsCombo.Location = new System.Drawing.Point(8, 83);
             this.weaponsCombo.Name = "weaponsCombo";
-            this.weaponsCombo.Size = new System.Drawing.Size(194, 21);
+            this.weaponsCombo.Size = new System.Drawing.Size(208, 21);
             this.weaponsCombo.TabIndex = 1;
             this.weaponsCombo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -452,41 +464,41 @@
             // 
             this.projectileCombo.FormattingEnabled = true;
             this.projectileCombo.Items.AddRange(new object[] {
-            "Frag Grenade",
-            "Plasma Grenade",
-            "Spike Grenade",
-            "Flame Grenade",
-            "Spike (Grenade)",
-            "Flamethrower Flame (Variant 1)",
-            "Flamethrower Flame (Variant 2)",
-            "Flamethrower Flame (Variant 3)",
-            "Flamethrower Flame (Variant 4)",
-            "Plasma Grenade (Long Fuse)",
-            "Fuel Rod Round (Variant 1)",
-            "Fuel Rod Round (Variant 2)",
-            "Rocket",
-            "Missile Pod Rocket",
-            "Wraith Blast",
-            "Brute Shot Round",
+            "Frag",
+            "Plasma",
+            "Spike",
+            "Flame",
+            "Spike",
+            "Flamethrower Flame",
+            "Flamethrower Flame 2",
+            "Flamethrower Flame 3",
+            "Flamethrower Flame 4",
+            "Plasma (Long Fuse)",
+            "Fuel Rod round 1",
+            "Fuel Rod round 2",
+            "Rockets",
+            "Missile Pod",
+            "Wraith shots",
+            "Brute Shot",
             "Hornet Rocket",
-            "Frage Grenade (Red Trail)",
+            "Frag Grenade (Red trail)",
             "Assault Rifle Round",
             "Battle Rifle Round",
-            "Carbine Round",
-            "DMR Round",
-            "Plasma Rifle Round",
+            "Covenant Rifle Round",
+            "DMR/AR round",
+            "Plasma Rifle/Ghost Round",
             "Shotgun Pellet",
             "Magnum Round",
             "Sniper Round",
-            "Spike (Spiker)",
+            "Spiker Round",
             "Mauler Round",
-            "Human Projectile (possible)",
+            "Human Projectile",
             "Needler Round",
             "Machine Gun Turret Round",
-            "Plasma Pistol Round"});
+            "Plasma Pistol"});
             this.projectileCombo.Location = new System.Drawing.Point(9, 38);
             this.projectileCombo.Name = "projectileCombo";
-            this.projectileCombo.Size = new System.Drawing.Size(194, 21);
+            this.projectileCombo.Size = new System.Drawing.Size(207, 21);
             this.projectileCombo.TabIndex = 1;
             this.projectileCombo.SelectedIndexChanged += new System.EventHandler(this.projectileCombo_SelectedIndexChanged);
             // 
@@ -504,7 +516,7 @@
             this.mapCombo.Enabled = false;
             this.mapCombo.FormattingEnabled = true;
             this.mapCombo.Items.AddRange(new object[] {
-            "DEFAULT",
+            "Default",
             "Guardian",
             "Riverworld",
             "s3d_avalanche",
@@ -513,36 +525,39 @@
             "s3d_turf"});
             this.mapCombo.Location = new System.Drawing.Point(7, 45);
             this.mapCombo.Name = "mapCombo";
-            this.mapCombo.Size = new System.Drawing.Size(135, 21);
+            this.mapCombo.Size = new System.Drawing.Size(209, 21);
             this.mapCombo.TabIndex = 13;
             this.mapCombo.SelectedIndexChanged += new System.EventHandler(this.mapCombo_SelectedIndexChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.mapLabel);
             this.groupBox3.Controls.Add(this.setButton);
             this.groupBox3.Controls.Add(this.mapCheck);
             this.groupBox3.Controls.Add(this.mapCombo);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 253);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(381, 100);
+            this.groupBox3.Size = new System.Drawing.Size(227, 100);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Map";
+            this.groupBox3.Text = "Map Selector";
             // 
-            // label11
+            // mapLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 75);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(52, 13);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Selected:";
+            this.mapLabel.AutoSize = true;
+            this.mapLabel.Enabled = false;
+            this.mapLabel.Location = new System.Drawing.Point(9, 75);
+            this.mapLabel.Name = "mapLabel";
+            this.mapLabel.Size = new System.Drawing.Size(89, 13);
+            this.mapLabel.TabIndex = 15;
+            this.mapLabel.Text = "Selected: Default";
+            this.mapLabel.Click += new System.EventHandler(this.label11_Click);
             // 
             // setButton
             // 
-            this.setButton.Location = new System.Drawing.Point(152, 44);
+            this.setButton.Enabled = false;
+            this.setButton.Location = new System.Drawing.Point(163, 70);
             this.setButton.Name = "setButton";
             this.setButton.Size = new System.Drawing.Size(53, 23);
             this.setButton.TabIndex = 14;
@@ -564,7 +579,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Halo_Online_Projectile_Editor.Properties.Resources.banner;
-            this.pictureBox1.Location = new System.Drawing.Point(-44, -3);
+            this.pictureBox1.Location = new System.Drawing.Point(-130, -3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(486, 140);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -576,9 +591,9 @@
             this.aboutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.aboutBtn.Location = new System.Drawing.Point(12, 698);
             this.aboutBtn.Name = "aboutBtn";
-            this.aboutBtn.Size = new System.Drawing.Size(381, 23);
+            this.aboutBtn.Size = new System.Drawing.Size(225, 23);
             this.aboutBtn.TabIndex = 6;
-            this.aboutBtn.Text = "About";
+            this.aboutBtn.Text = "About/Version";
             this.aboutBtn.UseVisualStyleBackColor = true;
             this.aboutBtn.Click += new System.EventHandler(this.aboutBtn_Click);
             // 
@@ -587,7 +602,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(405, 731);
+            this.ClientSize = new System.Drawing.Size(247, 731);
             this.Controls.Add(this.aboutBtn);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label2);
@@ -597,7 +612,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Cyka Halo Online Trainer";
+            this.Text = "Halo Online Trainer";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.jumpTrackbar)).EndInit();
@@ -637,9 +652,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox mapCheck;
         private System.Windows.Forms.Button setButton;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label mapLabel;
         private System.Windows.Forms.CheckBox fireRateCheck;
-        private System.Windows.Forms.Button resetHeightBtn;
         private System.Windows.Forms.TrackBar jumpTrackbar;
         private System.Windows.Forms.CheckBox jumpCheck;
         private System.Windows.Forms.Button aboutBtn;

@@ -40,8 +40,36 @@ namespace Halo_Online_Projectile_Editor
             0x001548, // Armor 25
             0x001549, // Armor 26
             0x00154A, // Armor 27
-
-
+        };
+        public static string[] list =
+        {
+            "Armor 1",
+            "Armor 2",
+            "Armor 3",
+            "Armor 4",
+            "Armor 5",
+            "Armor 6",
+            "Armor 7",
+            "Armor 8",
+            "Armor 9",
+            "Armor 10",
+            "Armor 11",
+            "Armor 12",
+            "Armor 13",
+            "Armor 14",
+            "Armor 15",
+            "Armor 16",
+            "Armor 17",
+            "Armor 18",
+            "Armor 19",
+            "Armor 20",
+            "Armor 21",
+            "Armor 22",
+            "Armor 23",
+            "Armor 24",
+            "Armor 25",
+            "Armor 26",
+            "Armor 27",
         };
 
         public static void SetNewProjectile(uint hex)
